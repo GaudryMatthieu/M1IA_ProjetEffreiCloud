@@ -204,8 +204,8 @@ Pour t'entraîner sans charge, tu peux aussi tuer un pod à la main : `kubectl -
 Le sujet demande « coût chiffré + au moins deux optimisations réellement appliquées, avec mesure de l'effet ».
 
 ```bash
-export PRICE_VCPU_HOUR=<€ par vCPU-heure>   # à lire sur la grille tarifaire du cloud de référence
-export PRICE_GB_HOUR=<€ par Go-heure de RAM>
+export PRICE_VCPU_HOUR=<0.04>   # à lire sur la grille tarifaire du cloud de référence
+export PRICE_GB_HOUR=<0.01>
 ./launch.sh finops-snapshot avant            # requests, usage réel (kubectl top), coût/h et coût/mois estimés
 # ... applique tes optimisations (voir ci-dessous) ...
 ./launch.sh finops-snapshot apres
