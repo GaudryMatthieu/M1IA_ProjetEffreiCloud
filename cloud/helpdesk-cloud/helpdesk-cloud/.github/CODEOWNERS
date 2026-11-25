@@ -1,5 +1,4 @@
 # A.8.4 — accès au code source : toute modification doit être relue par le propriétaire.
-# Remplacez @votre-compte-github puis activez "Require review from Code Owners" dans la protection de branche main.
-*                 @votre-compte-github
-/terraform/       @votre-compte-github
-/.github/         @votre-compte-github
+*                 @GaudryMatthieu
+/terraform/       @GaudryMatthieu
+/.github/         @GaudryMatthieu
