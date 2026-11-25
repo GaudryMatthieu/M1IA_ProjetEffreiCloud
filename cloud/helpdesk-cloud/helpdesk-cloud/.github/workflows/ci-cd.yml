@@ -21,13 +21,13 @@ jobs:
       - uses: actions/setup-python@v5
         with: {python-version: "3.12", cache: pip}
       - name: Back-end — lint + tests
-        working-directory: app/backend
+        working-directory: cloud/helpdesk-cloud/helpdesk-cloud
         run: |
           pip install -r requirements-dev.txt
           ruff check .
           python -m pytest -q
       - name: Worker — lint + tests
-        working-directory: app/worker
+        working-directory: cloud/helpdesk-cloud/helpdesk-cloud
         run: |
           pip install -r requirements-dev.txt
           ruff check .
@@ -61,6 +61,9 @@ jobs:
     if: github.event_name == 'push'
     runs-on: ubuntu-latest
     permissions: {contents: read, packages: write}
+    defaults:
+      run:
+       working-directory: cloud/helpdesk-cloud/helpdesk-cloud
     strategy:
       matrix:
         service: [backend, worker, frontend]
@@ -74,7 +77,7 @@ jobs:
       - name: Build (sans push)
         uses: docker/build-push-action@v6
         with:
-          context: app/${{ matrix.service }}
+          context: cloud/helpdesk-cloud/helpdesk-cloud
           load: true
           tags: ${{ env.IMAGE }}:${{ github.sha }}
           cache-from: type=gha
